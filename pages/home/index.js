@@ -1,4 +1,4 @@
-Component({
+Page({
   data: {
     todaymoney: '1000',
     in: '0',
@@ -53,15 +53,5 @@ Component({
         thumb: '/images/home/towel.png'
       }
     ]
-  },
-  pageLifetimes: {
-    show() {
-      if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 0
-        })
-      }
-    }
   }
 })

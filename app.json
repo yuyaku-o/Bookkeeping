@@ -7,7 +7,6 @@
     "pages/statistics/index"
   ],
   "tabBar": {
-    "custom": true,
     "color": "#7A7E83",
     "selectedColor": "#F4D03F",
     "borderStyle": "black",

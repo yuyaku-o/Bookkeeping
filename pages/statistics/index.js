@@ -104,20 +104,10 @@ function getOption({ title, xData, yData, sData } = chartsData) {
   return option;
 }
 
-Component({
+Page({
   data: {
     ec: {
       onInit: initChart
     }
-  },
-  pageLifetimes: {
-    show() {
-      if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 1
-        })
-      }
-    }
-  },
+  }
 })
