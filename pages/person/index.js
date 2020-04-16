@@ -6,10 +6,10 @@ Page({
      */
     data: {
         nickname: '',
-        avatar: '',
+        avatar: '../../images/home/cloths.png',
         mines: [{
             class: '',
-            icon: '../../images/mine/setting_category.svg',
+            icon: '',
             text: '类别设置',
             url: '../catelogsetting/catelogsetting'
         },
@@ -58,7 +58,7 @@ Page({
         getApp().globalData.currentPath = './..' + route.substring(5, route.length);
         this.setData({
             nickname: getApp().globalData.users.nickname,
-            avatar: getApp().globalData.users.avatarUrl ? "http://" + config.host + "/" + getApp().globalData.users.avatarUrl + "?" + new Date().getTime() : "../../images/avatar.png",
+            avatar: getApp().globalData.users.avatarUrl ? "http://" + config.host + "/" + getApp().globalData.users.avatarUrl + "?" + new Date().getTime() : "../../images/home/cloths.png",
             host: config.host
         })
     },
@@ -85,7 +85,7 @@ Page({
         }
         if (getApp().globalData.isUpdateAvatar) {
             this.setData({
-                avatar: getApp().globalData.users.avatarUrl ? "http://" + config.host + "/" + getApp().globalData.users.avatarUrl + "?" + new Date().getTime() : "./../../images/avatar.png",
+                avatar: getApp().globalData.users.avatarUrl ? "http://" + config.host + "/" + getApp().globalData.users.avatarUrl + "?" + new Date().getTime() : "../../images/home/cloths.png",
             });
             getApp().globalData.isUpdateAvatar = false;
         }

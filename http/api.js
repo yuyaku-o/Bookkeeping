@@ -6,11 +6,9 @@ const method = {
     post: 'POST',
     patch: 'PATCH',
 };
-const host = "192.168.1.7"; // 服务器地址
-// const host = "192.168.3.4";
-// const host = "192.168.43.32";
+const host = "127.0.0.1"; // 服务器地址
 const port = "3000";    // 服务器端口
-const baseURL = `http://${ host }:${ port }/`;
+const baseURL = `http://${ host }:${ port }/api/`;
 
 exports.getToken = function (tel) {
     return http({
@@ -24,7 +22,7 @@ exports.getToken = function (tel) {
 
 exports.login = function (data) {
     return http({
-        url: baseURL + 'users',
+        url: baseURL + 'login',
         method: method.post,
         data,
         headers: {

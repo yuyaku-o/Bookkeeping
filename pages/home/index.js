@@ -1,3 +1,5 @@
+const api = require('../../http/api')
+
 Page({
   data: {
     todaymoney: '1000',
@@ -53,5 +55,10 @@ Page({
         thumb: '/images/home/towel.png'
       }
     ]
+  },
+  onShow: function () {
+    api.login({"userid":3,"username":"user2","password":"123","createtime":"158767525"}).then((res) => {
+      // this.data.todaymoney = res[0].userid
+    })
   }
 })

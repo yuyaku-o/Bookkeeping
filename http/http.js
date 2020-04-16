@@ -18,11 +18,12 @@ function http({url, data, method, headers = {}}) {
             },
             success: (result) => {
                 const res = result.data;
-                if (res.code === 0) {
-                    resolve(res.data);
-                } else if (res.code === 1) {
-                    reject(res.msg);
-                }
+                // if (res.code === 0) {
+                    resolve(res);
+                    console.log(res)
+                // } else if (res.code === 1) {
+                    // reject(res.msg);
+                // }
                 // 隐藏 
                 wx.hideLoading();
             },

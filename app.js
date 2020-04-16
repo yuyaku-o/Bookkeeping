@@ -7,7 +7,7 @@ App({
         users: {
             tel: '18921483103',
             pwd: '',
-            nickname: '',
+            nickname: '小熊熊',
             avatarUrl: '',
         },
         c_out: [{
