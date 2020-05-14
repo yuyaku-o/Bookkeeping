@@ -3,7 +3,7 @@
   <form class='forget-form' method='post' action=''>
     <view class='forget-form-input-group'>
       <view class='forget-input-group'>
-        <input class='forget-input' placeholder='请输入手机号' type='text' value='{{users.tel}}' bindinput='watchTel'></input>
+        <input class='forget-input' placeholder='请输入手机号' type='text' value='{{users.username}}' bindinput='watchUsername'></input>
       </view>
       <view class='forget-input-group forget-input-vertify-wraper'>
         <input class='forget-input forget-input-vertify' type='text' placeholder='请输入验证码' value='{{verifyCode}}' bindinput='watchVerifyCode'></input>

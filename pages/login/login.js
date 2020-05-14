@@ -7,7 +7,7 @@ Page({
     data: {
         flg_loginbtn: true,
         users: {
-            tel: '',
+            username: '',
             pwd: ''
         }
     },
@@ -21,10 +21,10 @@ Page({
     /**
      * 监听手机号输入框
      */
-    watchTel: function (e) {
+    watchUsername: function (e) {
         this.handleWatch({
             e,
-            type: 'tel'
+            type: 'username'
         });
     },
     /**
@@ -39,7 +39,7 @@ Page({
     /**
      * 公共监听处理input
      */
-    handleWatch: function ({e, type}) {
+    handleWatch: function ({ e, type }) {
         const data = this.data;
         const users = data.users;
         const val = e.detail.value;
@@ -47,9 +47,9 @@ Page({
         let key = '';
 
         if (type === 'pwd') {
-            key = 'tel';
+            key = 'username';
         }
-        if (type === 'tel') {
+        if (type === 'username') {
             key = 'pwd';
         }
 
@@ -66,16 +66,11 @@ Page({
         api.login(data)
             .then((res) => {
                 let user = res[0];
-                let avatarUrls = user.avatarUrl.split("");
-                avatarUrls.splice(11, 13);
-                let avatarUrl = avatarUrls.join("");
-                user.avatarUrl = avatarUrl;
-                getApp().globalData.users.avatarUrl = avatarUrl;
                 getApp().globalData.users = user;
                 getApp().globalData.isLogin = true;
 
                 wx.switchTab({
-                    url: './../bill/bill',
+                    url: '../home/index',
                 })
             })
             .catch((errMsg) => {
@@ -91,52 +86,13 @@ Page({
      * 登录
      */
     handleLogin: function (e) {
-        // 手机号验证
-        if (!utils.validateTel(this.data.users.tel)) {
-            wx.showModal({
-                title: '提示',
-                content: '请输入正确的手机号',
-                showCancel: false
-            });
-            return;
-        }
         wx.showLoading({
             title: '正在登录...',
         });
         // 获取 token
-        api.getToken(this.data.users.tel)
-            .then((res) => {
-                // 存储 token 信息
-                wx.setStorageSync('token', res);
-                // 登录
-                this._login(this.data.users)
-            })
-            .catch((errMsg) => {
-                wx.showToast({
-                    title: 'token失效'
-                });
-                console.log(errMsg);
-            });
-    },
-
-    handleWXLogin: function () {
-        wx.login({
-            success: (res) => {
-                // console.log(res);
-                if (res.code) {
-                    wx.request({
-                        url: config.url.codeSession,
-                        method: config.method.post,
-                        data: {
-                            code: res.code,
-                        },
-                        success: (res) => {
-                            // console.log(res.data);
-                            wx.setStorageSync('user', res.data.data);
-                        }
-                    })
-                }
-            }
+        getApp().getToken().then(function () {
+            console.log('token')
+            this._login(this.data.users)
         })
-    }
+    },
 });

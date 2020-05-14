@@ -74,7 +74,7 @@ Page({
   },
   loadData: function () {
     let data = {
-      tel: users.tel
+      username: users.username
     };
     // api.getCategories(data).then((res) => {
     //   let data = this.formatData(res);
@@ -187,7 +187,7 @@ Page({
     let url = '../../' + data.url;
     let sendData;
     data.current === 0 ? sendData = data.data_out : sendData = data.data_in;
-    sendData.tel = users.tel;
+    sendData.username = users.username;
     sendData.type = data.current;
     let method = '';
     data.isUpdate ? method = 'updateBills' : method = 'saveBills';

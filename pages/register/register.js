@@ -6,7 +6,7 @@ Page({
 
     data: {
         users: {
-            tel: '',
+            username: '',
             pwd: ''
         },
         verifyCode: '',
@@ -21,10 +21,10 @@ Page({
         })
     },
 
-    watchTel: function (e) {
+    watchUsername: function (e) {
         this.handleWatch({
             e,
-            type: 'tel'
+            type: 'username'
         });
     },
     watchVerifyCode: function (e) {
@@ -51,10 +51,10 @@ Page({
         let flg_verifybtn;
         let key = '';
 
-        if (type === 'tel') {
+        if (type === 'username') {
             key = 'pwd';
             //如果手机号正确，则将“获取验证码”按钮设可以点击
-            if (utils.validateTel(val)) {
+            if (utils.validateUsername(val)) {
                 flg_verifybtn = false;
                 flg_regbtn = !(data.verifyCode !== '' && users.pwd !== '');
             } else {
@@ -69,7 +69,7 @@ Page({
             };
         }
         if (type === 'pwd') {
-            key = 'tel';
+            key = 'username';
             flg_regbtn = (val === '');
             users[type] = val;
             data = {
@@ -82,7 +82,7 @@ Page({
             if (val === '') {
                 flg_regbtn = true;
             } else {
-                flg_regbtn = !(users.tel !== '' && users.pwd !== '');
+                flg_regbtn = !(users.username !== '' && users.pwd !== '');
             }
 
             data = {
@@ -94,7 +94,7 @@ Page({
         this.setData(data);
     },
     handleRegister: function (e) {
-        if (!utils.validateTel(this.data.users.tel)) {
+        if (!utils.validateUsername(this.data.users.username)) {
             wx.showModal({
                 title: '提示',
                 content: '请输入正确的手机号',

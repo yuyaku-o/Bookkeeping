@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
@@ -25,7 +25,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
-	"appid": "touristappid",
+	"appid": "wx516d07a01bed9fe4",
 	"projectname": "%E8%87%AA%E5%AE%9A%E4%B9%89%20tabBar",
 	"debugOptions": {
 		"hidedInDevtools": []

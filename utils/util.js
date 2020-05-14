@@ -74,9 +74,9 @@ const randomColor = () => {
 /**
  * 电话 正则
  */
-function validateTel(tel) {
-    // console.log(config.TEL_REGEXP.test(tel));
-    return config.TEL_REGEXP.test(tel);
+function validateUsername(username) {
+    // console.log(config.TEL_REGEXP.test(username));
+    return config.TEL_REGEXP.test(username);
 }
 
 /**
@@ -112,7 +112,7 @@ module.exports = {
     getWeek: getWeek,
     getYear,
     getMonth,
-    validateTel,
+    validateUsername,
     validatePwd,
     desc,
     formatDate

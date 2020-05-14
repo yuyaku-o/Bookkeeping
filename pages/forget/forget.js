@@ -7,7 +7,7 @@ Page({
     data: {
         // 用户信息
         users: {
-            tel: '',
+            username: '',
             pwd: ''
         },
         // 验证码
@@ -29,10 +29,10 @@ Page({
     /**
      * 监听手机号
      */
-    watchTel: function(e) {
+    watchUsername: function(e) {
         this.handleWatch({
             e,
-            type: 'tel'
+            type: 'username'
         });
     },
     // 监听验证码
@@ -64,10 +64,10 @@ Page({
         let flg_verifybtn;
         let key = '';
 
-        if (type === 'tel') {
+        if (type === 'username') {
             key = 'pwd';
             //如果手机号正确，则将“获取验证码”按钮设可以点击
-            if (utils.validateTel(val)) {
+            if (utils.validateUsername(val)) {
                 flg_verifybtn = false;
                 flg_forgetbtn = !(data.verifyCode !== '' && users.pwd !== '');
             } else {
@@ -82,7 +82,7 @@ Page({
             };
         }
         if (type === 'pwd') {
-            key = 'tel';
+            key = 'username';
             flg_forgetbtn = (val === '');
             users[type] = val;
             data = {
@@ -95,7 +95,7 @@ Page({
             if(val === ''){
                 flg_forgetbtn = true;
             }else{
-                flg_forgetbtn = !(users.tel !== '' && users.pwd != '');
+                flg_forgetbtn = !(users.username !== '' && users.pwd != '');
             }
             
             data={
@@ -108,7 +108,7 @@ Page({
     },
     // 忘记密码按钮处理
     handleForgetpwd: function() {
-        if (!utils.validateTel(this.data.users.tel)) {
+        if (!utils.validateUsername(this.data.users.username)) {
             wx.showModal({
                 title: '提示',
                 content: '请输入正确的手机号',

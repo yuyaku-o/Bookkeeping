@@ -98,8 +98,8 @@ Page({
             content: '您确定要退出当前账号？',
             success: (res) => {
                 if (res.confirm) {
-                    wx.redirectTo({
-                        url: './../login/login',
+                    wx.navigateTo({
+                        url: '../login/login',
                     })
                 }
             }

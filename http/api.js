@@ -1,4 +1,4 @@
-const {http, uploadFile} = require('./http.js');
+const { http, uploadFile } = require('./http.js');
 const tokenStorage = wx.getStorageSync('token');
 
 const method = {
@@ -8,21 +8,19 @@ const method = {
 };
 const host = "127.0.0.1"; // 服务器地址
 const port = "3000";    // 服务器端口
-const baseURL = `http://${ host }:${ port }/api/`;
+const baseURL = `http://${host}:${port}/api/`;
 
-exports.getToken = function (tel) {
+exports.getToken = function (users) {
     return http({
-        url: baseURL + 'oauth2/token',
-        method: method.get,
-        data: {
-            tel
-        }
+        url: baseURL + 'users/token',
+        method: method.post,
+        data: users
     });
 };
 
 exports.login = function (data) {
     return http({
-        url: baseURL + 'login',
+        url: baseURL + 'users/login',
         method: method.post,
         data,
         headers: {
@@ -102,7 +100,7 @@ exports.delCategories = function (_id) {
     return http({
         url: baseURL + 'categories/del',
         method: method.post,
-        data: {_id},
+        data: { _id },
         headers: {
             token: tokenStorage.token,
             expiresIn: tokenStorage.expiresIn
@@ -158,7 +156,7 @@ exports.updateNickname = function (data) {
     })
 };
 
-exports.avatar = function ({data, fileOptions}) {
+exports.avatar = function ({ data, fileOptions }) {
     return uploadFile({
         url: baseURL + 'users/avatar',
         fileOptions,
