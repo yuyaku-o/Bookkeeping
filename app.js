@@ -144,7 +144,10 @@ App({
                             url: 'http://' + config.host + '/api/users/code',
                             method: 'POST',
                             data: {
-                                code: res.code
+                                code: res.code,
+                                appid: config.appid,
+                                secret: config.secret,
+                                grant_type: 'authorization_code'
                             },
                             success(res) {
                                 //成功返回数据后，将token值存储到localStorage中
