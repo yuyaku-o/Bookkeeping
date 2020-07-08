@@ -34,7 +34,7 @@ Page({
             {
                 class: 'bottom10',
                 icon: '../../images/mine/setting_about.svg',
-                text: '关于家庭记账系统',
+                text: '关于记账小程序',
                 url: '../about/about'
             },
             // {

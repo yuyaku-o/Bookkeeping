@@ -14,7 +14,7 @@ Page({
 
     onLoad: function (options) {
         wx.setNavigationBarTitle({
-            title: '家庭记账系统-登录',
+            title: '简易记账小程序-登录',
         })
     },
 
@@ -62,26 +62,6 @@ Page({
             flg_loginbtn
         });
     },
-    _login: function (data) {
-        api.login(data)
-            .then((res) => {
-                let user = res[0];
-                getApp().globalData.users = user;
-                getApp().globalData.isLogin = true;
-
-                wx.switchTab({
-                    url: '../home/index',
-                })
-            })
-            .catch((errMsg) => {
-                console.log(errMsg);
-                wx.showToast({
-                    title: errMsg,
-                    icon: 'none',
-                    duration: 2000
-                })
-            });
-    },
     /**
      * 登录
      */
@@ -89,10 +69,28 @@ Page({
         wx.showLoading({
             title: '正在登录...',
         });
+        const data = this.data
+        const users = data.users
         // 获取 token
         getApp().getToken().then(function () {
-            console.log('token')
-            this._login(this.data.users)
+            // api.login(users)
+            //     .then((res) => {
+            //         let user = res[0];
+            //         getApp().globalData.users = user;
+            //         getApp().globalData.isLogin = true;
+
+            wx.switchTab({
+                url: '../home/index',
+            })
+            //     })
+            //     .catch((errMsg) => {
+            //         console.log(errMsg);
+            //         wx.showToast({
+            //             title: errMsg,
+            //             icon: 'none',
+            //             duration: 2000
+            //         })
+            //     });
         })
     },
 });

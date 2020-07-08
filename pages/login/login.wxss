@@ -1,6 +1,7 @@
 /* pages/login/login.wxss */
 
 .container {
+    height: 500px;
     background-color: rgb(248, 248, 248);
 }
 
@@ -10,8 +11,8 @@
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     margin-top: 20px;
 }
 
@@ -37,10 +38,12 @@
 }
 
 .login-btn {
-    background-color: rgba(235, 77, 69, 1);
+    background-color: #1AAD19;
     border: none;
     color: #fff;
     font-size: 18px;
+    /* 只微信登录 */
+    margin-top: 80px;
 }
 
 .login-btn[disabled] {

@@ -17,7 +17,7 @@ function http({url, data, method, headers = {}}) {
                 expiresIn: headers.expiresIn
             },
             success: (result) => {
-                const res = result.data;
+                const res = result;
                 // if (res.code === 0) {
                     resolve(res);
                     console.log(res)

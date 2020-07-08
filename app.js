@@ -136,7 +136,6 @@ App({
             // 登录
             wx.login({
                 success: res => {
-                    console.log('code:' + res.code)
                     // 发送 res.code 到后台换取 openId, sessionKey, unionId
                     if (res.code) {
                         //发送res.code 到后台
@@ -152,10 +151,10 @@ App({
                             success(res) {
                                 //成功返回数据后，将token值存储到localStorage中
                                 wx.setStorage({
-                                    key: 'yerlLocalToken',
-                                    data: res.data.token
+                                    key: 'Token',
+                                    data: res.data
                                 });
-                                var resArg = res.data.token;
+                                console.log('token:' + wx.getStorageSync('Token') || [])
                                 resolve()
                             },
                             fail() {
